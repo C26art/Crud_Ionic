@@ -1,0 +1,48 @@
+{
+  "cliente": [
+    {
+      "id": 1,
+      "nome": "User example",
+      "email": "user.example@test.com",
+      "telefone": "1-123-44-789",
+      "logradouro": "Rua xyz",
+      "numero": 123,
+      "bairro": "copacabana",
+      "cidade": "Rio de Janeiro",
+      "cep": "20000000"
+    },
+    {
+      "nome": "Arthur Adam",
+      "email": "arthur@gmail.com",
+      "telefone": "(21)9995320535",
+      "logradouro": "Rua 5 de julho",
+      "numero": 188,
+      "bairro": "copacabana",
+      "cidade": "rio de janeiro",
+      "cep": "22051030",
+      "id": 2
+    },
+    {
+      "nome": "Cristian",
+      "email": "cristian@gmail.com",
+      "telefone": "(21) 999532053",
+      "logradouro": "Rua 5 de julho",
+      "numero": 188,
+      "bairro": "Copacabana",
+      "cidade": "Rio de Janeiro",
+      "cep": "22031050",
+      "id": 3
+    },
+    {
+      "nome": "Cristian",
+      "email": "cristian@gmail.com",
+      "telefone": "(021)999532053",
+      "logradouro": "Rua 5 de julho",
+      "numero": 188,
+      "bairro": "Copacabana",
+      "cidade": "Rio de Janeiro",
+      "cep": "2203031",
+      "id": 4
+    }
+  ]
+}

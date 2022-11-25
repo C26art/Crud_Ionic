@@ -1,0 +1,26 @@
+{
+    "cliente": [
+      {
+        "id": 1,
+        "nome": "User example",
+        "email": "user.example@test.com",
+        "telefone": "1-123-44-789",
+        "logradouro": "Rua xyz",
+        "numero": 123,
+        "bairro": "copacabana",
+        "cidade": "Rio de Janeiro",
+        "cep": "20000000"
+      },
+      {
+        "nome": "Arthur Adam",
+        "email": "arthur@gmail.com",
+        "telefone": "(21)9995320535",
+        "logradouro": "Rua 5 de julho",
+        "numero": 188,
+        "bairro": "copacabana",
+        "cidade": "rio de janeiro",
+        "cep": "22051030",
+        "id": 2
+      }
+    ]
+  }

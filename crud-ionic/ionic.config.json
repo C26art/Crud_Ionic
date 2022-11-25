@@ -1,0 +1,7 @@
+{
+  "name": "CrudIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
