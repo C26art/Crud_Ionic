@@ -14,8 +14,9 @@ import { ClienteService } from '../services/cliente.service';
 })
 export class Tab1Page implements OnInit {
 
+  isModalOpen = false;
   clienteForm!: FormGroup;
-  statusCadastro!: string;
+
 
 
   constructor(private formBuilder: FormBuilder, private clienteService: ClienteService, private router: Router) {}
@@ -92,6 +93,7 @@ export class Tab1Page implements OnInit {
   addCliente() {
     const newCliente = this.clienteForm.getRawValue() as Cliente;
 
+
    this.clienteService.insertCliente(newCliente)
     .subscribe({
       next: (result:any) => {
@@ -100,6 +102,8 @@ export class Tab1Page implements OnInit {
       },
       error: (error:any) => { console.log(error)}
     });
+
+
   }
 
 }

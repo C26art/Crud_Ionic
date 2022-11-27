@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
+import { ModalClientDetailsModule } from '../modal-client-details/modal-client-details.module';
 import { ClienteService } from '../services/cliente.service';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { Tab2Page } from './tab2.page';
@@ -15,7 +16,8 @@ import { Tab2Page } from './tab2.page';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    ModalClientDetailsModule
   ],
   declarations: [Tab2Page],
   providers: [ClienteService]

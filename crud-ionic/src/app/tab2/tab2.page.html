@@ -14,29 +14,40 @@
     <ion-grid class="ion-grid-padding">
       <ion-row>
         <!-- header(thead) da tabela-->
-        <ion-col>#</ion-col>
-        <ion-col>Nome</ion-col>
-        <ion-col>Email</ion-col>
-        <ion-col>Telefone</ion-col>
-        <ion-col>Logradouro</ion-col>
-        <ion-col>Número</ion-col>
-        <ion-col>Bairro</ion-col>
-        <ion-col>Cidade</ion-col>
-        <ion-col>Cep</ion-col>
+        <ion-col sizeXs="2">#</ion-col>
+        <ion-col sizeXs="7">Nome</ion-col>
+        <ion-col class="hidden-xs-col">Email</ion-col>
+        <ion-col class="hidden-xs-col">Telefone</ion-col>
+        <ion-col class="hidden-xs-col">Logradouro</ion-col>
+        <ion-col class="hidden-xs-col">Número</ion-col>
+        <ion-col class="hidden-xs-col">Bairro</ion-col>
+        <ion-col class="hidden-xs-col">Cidade</ion-col>
+        <ion-col class="hidden-xs-col">Cep</ion-col>
+        <ion-col sizeXs="3" class="show-xs-col hidden-xl-col hidden lg-col"
+          >Detalhes</ion-col
+        >
       </ion-row>
       <ion-row *ngFor="let cliente of clientes">
         <!-- body(tbody) da tabela-->
-        <ion-col>{{ cliente.id }}</ion-col>
-        <ion-col>{{ cliente.nome }}</ion-col>
-        <ion-col>{{ cliente.email }}</ion-col>
-        <ion-col>{{ cliente.telefone }}</ion-col>
-        <ion-col>{{ cliente.logradouro }}</ion-col>
-        <ion-col>{{ cliente.numero }}</ion-col>
-        <ion-col>{{ cliente.bairro }}</ion-col>
-        <ion-col>{{ cliente.id }}</ion-col>
-        <ion-col>{{ cliente.cidade }}</ion-col>
-        <ion-col>{{ cliente.cep }}</ion-col>
+        <ion-col sizeXs="2">{{ cliente.id }} </ion-col>
+        <ion-col sizeXs="7">{{ cliente.nome }} </ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.email }}</ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.telefone }}</ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.logradouro }}</ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.numero }}</ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.bairro }}</ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.id }}</ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.cidade }}</ion-col>
+        <ion-col class="hidden-xs-col">{{ cliente.cep }}</ion-col>
+        <ion-col
+          sizeXs="3"
+          class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"
+          ><ion-button class="btn-modal" fill="clear" (click)="openModal()"
+            >Show</ion-button
+          ></ion-col
+        >
       </ion-row>
     </ion-grid>
+    <div class="ion-modal-content"></div>
   </ion-content>
 </ion-content>

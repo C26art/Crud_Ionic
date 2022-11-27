@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
+import { ModalClientDetailsComponent } from '../modal-client-details/modal-client-details.component';
 import { Cliente } from '../model/cliente.model';
 import { ClienteService } from '../services/cliente.service';
 
@@ -11,13 +13,12 @@ import { ClienteService } from '../services/cliente.service';
 export class Tab2Page {
 
  clientes!: Cliente[];
- isModalOpen = false;
 
-  constructor(private service: ClienteService) {}
+
+  constructor(private service: ClienteService, private modalCtrl: ModalController) {}
 
   public ionViewWillEnter(): void {
     this.listaClientes();
-
   }
 
   listaClientes() {
@@ -27,7 +28,11 @@ export class Tab2Page {
     });
   }
 
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalClientDetailsComponent,
+
+    });
+    modal.present();
   }
 }
