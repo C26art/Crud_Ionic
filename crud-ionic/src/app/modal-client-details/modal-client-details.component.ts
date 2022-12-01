@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+
+import { Cliente } from '../model/cliente.model';
+import { ClienteService } from '../services/cliente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-client-details',
@@ -8,7 +12,11 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalClientDetailsComponent implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  @Input() cliente!: Cliente;
+
+  constructor(private modalCtrl: ModalController,
+    private service: ClienteService,
+    private router: Router) { }
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
@@ -16,4 +24,20 @@ export class ModalClientDetailsComponent implements OnInit {
 
   ngOnInit() {}
 
+  edit(id:number) {
+    //redirecionar para a pagina de cadastro informando o id do cliente
+    this.router.navigate(['/tabs/editar', id]);
+    this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  delete(id:number) {
+    this.service.deleteCliente(id).subscribe({
+      next: () => {
+        this.modalCtrl.dismiss(null, 'cancel');
+      },
+      error: () => {
+        console.error(console.error);
+      },
+    });
+  }
 }

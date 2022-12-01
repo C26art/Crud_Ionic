@@ -54,6 +54,17 @@
       "cidade": "",
       "cep": "",
       "id": 5
+    },
+    {
+      "nome": "André",
+      "email": "andre@gmail.com",
+      "telefone": "(21)9999532954",
+      "logradouro": "rua 1",
+      "numero": 2,
+      "bairro": "centro",
+      "cidade": "Santos",
+      "cep": "22032097",
+      "id": 6
     }
   ]
 }

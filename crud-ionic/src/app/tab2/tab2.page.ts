@@ -5,6 +5,7 @@ import { ModalClientDetailsComponent } from '../modal-client-details/modal-clien
 import { Cliente } from '../model/cliente.model';
 import { ClienteService } from '../services/cliente.service';
 
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -28,11 +29,24 @@ export class Tab2Page {
     });
   }
 
-  async openModal() {
+  async openModal(id:number) {
+    const cliente = this.clientes.find(cliente => cliente.id === id);
+    console.log(cliente);
+
     const modal = await this.modalCtrl.create({
       component: ModalClientDetailsComponent,
-
+      componentProps: {
+        'cliente': cliente
+      }
     });
-    modal.present();
+
+    modal.onWillDismiss().then (
+      event => {
+        if(event.role === 'cancel') {
+          this.listaClientes();
+        }
+      }
+    );
+    return await modal.present();
   }
 }
