@@ -17,7 +17,7 @@
     <form
       [formGroup]="clienteForm"
       fullscreen
-      (submit)="editable ? editCliente() : editCliente() "
+      (submit)="editable ? editCliente() : addCliente() "
     >
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item-group>
@@ -96,8 +96,12 @@
         </ion-item-group>
       </ion-list>
       <div class="ion-padding">
-        <ion-button expand="block" type="submit" class="ion-no-margin"
-          >{{ editable ? 'Editar' : 'Registrar'}}</ion-button
+        <ion-button
+          [disabled]="clienteForm.invalid"
+          expand="block"
+          type="submit"
+          class="ion-margin"
+          >{{editable ? 'Editar' : 'Registrar'}}</ion-button
         >
       </div>
     </form>

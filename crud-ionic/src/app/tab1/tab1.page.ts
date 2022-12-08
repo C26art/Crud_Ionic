@@ -101,7 +101,6 @@ export class Tab1Page implements OnInit {
         this.clienteService.findCliente(clienteId).subscribe({
           next: (clienteDB: Cliente) => {
           this.cliente = clienteDB;
-          this.cliente.id = clienteId;
           this.editable = true;
           this.loadForm();
           },

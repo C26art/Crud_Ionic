@@ -21,6 +21,17 @@
       "cidade": "rio de janeiro",
       "cep": "22051030",
       "id": 2
+    },
+    {
+      "nome": "Paulo",
+      "email": "paulo@gmail.com",
+      "telefone": "99999999999999",
+      "logradouro": "Travessa Jaú",
+      "numero": 12,
+      "bairro": "Copacabana",
+      "cidade": "Rio de Janeiro",
+      "cep": "22030-050",
+      "id": 3
     }
   ]
 }
