@@ -1,13 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Cadastro </ion-title>
+    <ion-title> {{ editable ? 'Edição' : 'Cadastro'}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cadastro de Cliente</ion-title>
+      <ion-title size="large"
+        >{{ editable ? 'Edição' : 'Cadastro do Cliente'}}</ion-title
+      >
     </ion-toolbar>
   </ion-header>
 
@@ -15,7 +17,7 @@
     <form
       [formGroup]="clienteForm"
       fullscreen
-      (submit)="editable ? addCliente() : addCliente() "
+      (submit)="editable ? editCliente() : editCliente() "
     >
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item-group>
@@ -48,11 +50,21 @@
             <ion-label>Dados Endereço</ion-label>
           </ion-item-divider>
           <ion-item>
+            <ion-label position="stacked">CEP:</ion-label>
+            <ion-input
+              (change)="loadEndereco()"
+              formControlName="cep"
+              type="text"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-item>
             <ion-label position="stacked">Logradouro:</ion-label>
             <ion-input
               formControlName="logradouro"
               type="text"
               required
+              readonly
             ></ion-input>
           </ion-item>
           <ion-item>
@@ -69,6 +81,7 @@
               formControlName="bairro"
               type="text"
               required
+              readonly
             ></ion-input>
           </ion-item>
           <ion-item>
@@ -77,17 +90,14 @@
               formControlName="cidade"
               type="text"
               required
+              readonly
             ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="stacked">CEP:</ion-label>
-            <ion-input formControlName="cep" type="text" required></ion-input>
           </ion-item>
         </ion-item-group>
       </ion-list>
       <div class="ion-padding">
         <ion-button expand="block" type="submit" class="ion-no-margin"
-          >Registrar</ion-button
+          >{{ editable ? 'Editar' : 'Registrar'}}</ion-button
         >
       </div>
     </form>

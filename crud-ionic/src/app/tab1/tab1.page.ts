@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Cliente } from '../model/cliente.model';
+import { Endereco } from '../model/endereco.model';
 import { ClienteService } from '../services/cliente.service';
+import { CorreiosService } from '../services/correios.service';
 
 
 
@@ -19,10 +21,9 @@ export class Tab1Page implements OnInit {
   editable:boolean = false;
 
 
-
-
   constructor(private formBuilder: FormBuilder, private clienteService: ClienteService, private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private correiosService: CorreiosService) {}
 
   ngOnInit(): void {
     this.clienteForm = this.formBuilder.group({
@@ -30,7 +31,7 @@ export class Tab1Page implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(3),
           Validators.maxLength(100)
         ]
       ],
@@ -70,7 +71,7 @@ export class Tab1Page implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(5),
+          Validators.minLength(1),
           Validators.maxLength(100)
         ]
       ],
@@ -78,7 +79,7 @@ export class Tab1Page implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(10),
+          Validators.minLength(2),
           Validators.maxLength(100)
         ]
       ],
@@ -134,7 +135,38 @@ export class Tab1Page implements OnInit {
       cep: this.cliente.cep,
     });
   }
-  editar() {
-    const clienteId = this.cliente.id;
+
+  loadEndereco() {
+    const cep:string = this.clienteForm.get('cep')?.value;
+    this.correiosService.getEndereco(cep).subscribe({
+      next: (result:Endereco) => {
+        this.clienteForm.patchValue({
+          logradouro: result.logradouro,
+          bairro: result.bairro,
+          cidade: result.localidade,
+          cep: result.cep
+        });
+      },
+      error: (err) => {
+        console.error(err)
+      }
+    });
+  }
+
+
+  editCliente() {
+    const editCliente = this.clienteForm.getRawValue() as Cliente;
+    editCliente.id = this.cliente.id;
+
+    this.clienteService.updateCliente(editCliente).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/tabs/tab2');
+        this.clienteForm.reset();
+      },
+      error: (err) => {
+        console.error(err);
+        this.clienteForm.reset();
+      }
+    });
   }
 }
